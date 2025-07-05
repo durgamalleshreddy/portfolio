@@ -15,15 +15,18 @@ const HeaderContainer = styled.header`
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  padding-top: calc(2rem + 80px);
 
   @media (max-width: 768px) {
     padding: 1rem;
+    padding-top: calc(1rem + 70px);
     min-height: 100vh;
     justify-content: center;
   }
   
   @media (max-width: 480px) {
     padding: 0.5rem;
+    padding-top: calc(0.5rem + 60px);
   }
 `;
 
@@ -34,9 +37,15 @@ const ProfileSection = styled(motion.div)`
   margin-bottom: 2rem;
   position: relative;
   z-index: 2;
+  margin-top: 2rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 0.5rem;
   }
 `;
 

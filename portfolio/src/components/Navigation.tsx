@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-const Nav = styled(motion.nav)`
+const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +12,6 @@ const Nav = styled(motion.nav)`
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--nav-border);
   transition: all 0.3s ease;
-  
   @media (max-width: 768px) {
     backdrop-filter: blur(15px);
   }
@@ -26,7 +24,6 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   @media (max-width: 768px) {
     padding: 0.75rem 1rem;
   }
@@ -38,46 +35,35 @@ const Logo = styled.div`
   color: var(--text-primary);
   cursor: pointer;
   transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--accent-primary);
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.1rem;
-  }
+  &:hover { color: var(--accent-primary); }
+  @media (max-width: 768px) { font-size: 1.25rem; }
+  @media (max-width: 480px) { font-size: 1.1rem; }
 `;
 
 const NavLinks = styled.div<{ isOpen: boolean }>`
   display: flex;
   gap: 2rem;
   align-items: center;
-  
   @media (max-width: 768px) {
-    position: fixed;
+    position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: var(--nav-bg);
     backdrop-filter: blur(15px);
     flex-direction: column;
-    padding: 1.5rem 1rem;
-    transform: ${props => props.isOpen ? 'translateY(-100%)' : 'translateY(0)'};
-    transition: transform 0.3s ease;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    transform: ${props => props.isOpen ? 'translateY(0)' : 'translateY(-120%)'};
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
     border-top: 1px solid var(--nav-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     max-height: 70vh;
     overflow-y: auto;
     z-index: 1001;
   }
-  
   @media (max-width: 480px) {
-    padding: 1rem;
-    max-height: 60vh;
+    padding: 0.5rem 0.25rem;
+    max-height: 50vh;
   }
 `;
 
@@ -89,11 +75,7 @@ const NavLink = styled.a`
   cursor: pointer;
   position: relative;
   padding: 0.5rem 0;
-  
-  &:hover {
-    color: var(--accent-primary);
-  }
-  
+  &:hover { color: var(--accent-primary); }
   &::after {
     content: '';
     position: absolute;
@@ -104,29 +86,18 @@ const NavLink = styled.a`
     background: var(--accent-primary);
     transition: width 0.3s ease;
   }
-  
-  &:hover::after {
-    width: 100%;
-  }
-  
+  &:hover::after { width: 100%; }
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    padding: 0.75rem 0;
+    font-size: 1rem;
+    padding: 0.5rem 0;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
-    
-    &:last-child {
-      border-bottom: none;
-    }
-    
-    &::after {
-      display: none;
-    }
-    
+    &:last-child { border-bottom: none; }
+    &::after { display: none; }
     &:hover {
       background: var(--bg-secondary);
-      border-radius: 8px;
+      border-radius: 6px;
       margin: 0.25rem 0;
     }
   }
@@ -142,12 +113,10 @@ const MobileMenuButton = styled.button`
   padding: 0.5rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  
   &:hover {
     background: var(--bg-secondary);
     color: var(--accent-primary);
   }
-  
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
@@ -157,30 +126,58 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-const MobileMenuBackdrop = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 999;
-  display: none;
-  
-  @media (max-width: 768px) {
-    display: block;
+const MoreMenuToggle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover { color: var(--accent-primary); }
+`;
+
+const MoreMenu = styled.div<{ show: boolean }>`
+  width: 100%;
+  background: var(--bg-secondary);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-top: 0.25rem;
+  padding: 0.5rem 0;
+  display: ${props => props.show ? 'block' : 'none'};
+  text-align: center;
+`;
+
+const MoreLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background: var(--accent-primary);
+    color: #fff;
   }
 `;
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -191,16 +188,14 @@ const Navigation: React.FC = () => {
       const target = event.target as HTMLElement;
       if (isOpen && !target.closest('.nav-container') && !target.closest('.mobile-menu-button')) {
         setIsOpen(false);
+        setShowMore(false);
       }
     };
-
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      // Don't hide body scroll for better UX
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -212,6 +207,7 @@ const Navigation: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
+    setShowMore(false);
   };
 
   const navItems = [
@@ -226,53 +222,43 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <>
-      <Nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        style={{
-          boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none'
-        }}
-      >
-        <NavContainer className="nav-container">
-          <Logo onClick={() => scrollToSection('about')}>
-            Durga Mallesh Reddy
-          </Logo>
-          
-          <NavLinks isOpen={isOpen}>
-            {navItems.map((item) => (
-              <NavLink
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </NavLinks>
-          
-          <MobileMenuButton 
-            className="mobile-menu-button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </MobileMenuButton>
-        </NavContainer>
-      </Nav>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <MobileMenuBackdrop
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setIsOpen(false)}
-          />
-        )}
-      </AnimatePresence>
-    </>
+    <Nav
+      style={{
+        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none'
+      }}
+    >
+      <NavContainer className="nav-container">
+        <Logo onClick={() => scrollToSection('about')}>
+          Durga Mallesh Reddy
+        </Logo>
+        <NavLinks isOpen={isOpen}>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+          {/* More menu for mobile */}
+          <MoreMenuToggle onClick={() => setShowMore(s => !s)}>
+            More <FaChevronDown style={{ transform: showMore ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+          </MoreMenuToggle>
+          <MoreMenu show={showMore}>
+            <MoreLink href="https://github.com/durgamalleshreddy" target="_blank" rel="noopener noreferrer"><FaGithub /> GitHub</MoreLink>
+            <MoreLink href="https://linkedin.com/in/durgamalleshreddy" target="_blank" rel="noopener noreferrer"><FaLinkedin /> LinkedIn</MoreLink>
+            <MoreLink href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</MoreLink>
+          </MoreMenu>
+        </NavLinks>
+        <MobileMenuButton 
+          className="mobile-menu-button"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </MobileMenuButton>
+      </NavContainer>
+    </Nav>
   );
 };
 
