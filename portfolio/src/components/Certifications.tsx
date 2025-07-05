@@ -86,17 +86,17 @@ const Certifications: React.FC = () => {
     {
       title: "Python Crash Course",
       issuer: "Google",
-      date: "2023"
+      date: "2020"
     },
     {
       title: "Introduction to Jenkins",
       issuer: "Linux Foundation",
-      date: "2023"
+      date: "2024"
     },
     {
       title: "AI for Everyone",
       issuer: "DeepLearning.AI",
-      date: "2023"
+      date: "2021"
     },
     {
       title: "Goldman Sachs Engineering Virtual Program",
@@ -117,6 +117,11 @@ const Certifications: React.FC = () => {
       title: "Introduction to DevOps & SRE (Site Reliability Engineering)",
       issuer: "Linux Foundation",
       date: "2023"
+    },
+    {
+      title: "Generative AI fundamentals",
+      issuer: "Databricks",
+      date: "2025"
     }
   ];
 
