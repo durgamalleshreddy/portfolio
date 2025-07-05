@@ -6,6 +6,14 @@ import { FaUserTie } from 'react-icons/fa';
 const AboutSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-secondary);
+  
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -22,6 +30,18 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const SummaryCard = styled(motion.div)`
@@ -33,6 +53,20 @@ const SummaryCard = styled(motion.div)`
   font-size: 1.1rem;
   color: var(--text-secondary);
   text-align: justify;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 12px;
+    line-height: 1.7;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 `;
 
 const About: React.FC = () => {

@@ -52,18 +52,20 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     background: var(--nav-bg);
     backdrop-filter: blur(15px);
     flex-direction: column;
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    padding: 1.5rem 1rem 1rem 1rem;
     transform: ${props => props.isOpen ? 'translateY(0)' : 'translateY(-120%)'};
     transition: transform 0.3s cubic-bezier(.4,2,.6,1);
     border-top: 1px solid var(--nav-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     max-height: 70vh;
     overflow-y: auto;
     z-index: 1001;
+    border-radius: 0 0 16px 16px;
   }
   @media (max-width: 480px) {
-    padding: 0.5rem 0.25rem;
-    max-height: 50vh;
+    padding: 1rem 0.75rem 0.75rem 0.75rem;
+    max-height: 60vh;
+    border-radius: 0 0 12px 12px;
   }
 `;
 
@@ -89,17 +91,25 @@ const NavLink = styled.a`
   &:hover::after { width: 100%; }
   @media (max-width: 768px) {
     font-size: 1rem;
-    padding: 0.5rem 0;
+    padding: 0.75rem 1rem;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    transition: all 0.3s ease;
     &:last-child { border-bottom: none; }
     &::after { display: none; }
     &:hover {
       background: var(--bg-secondary);
-      border-radius: 6px;
-      margin: 0.25rem 0;
+      color: var(--accent-primary);
+      transform: translateX(4px);
     }
+  }
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+    margin: 0.2rem 0;
   }
 `;
 

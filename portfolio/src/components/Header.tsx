@@ -18,15 +18,16 @@ const HeaderContainer = styled.header`
   padding-top: calc(2rem + 80px);
 
   @media (max-width: 768px) {
-    padding: 1rem;
-    padding-top: calc(1rem + 70px);
+    padding: 1.5rem;
+    padding-top: calc(1.5rem + 70px);
     min-height: 100vh;
     justify-content: center;
   }
   
   @media (max-width: 480px) {
-    padding: 0.5rem;
-    padding-top: calc(0.5rem + 60px);
+    padding: 1rem;
+    padding-top: calc(1rem + 60px);
+    min-height: 90vh;
   }
 `;
 
@@ -193,6 +194,18 @@ const ProfileImage = styled(motion.div)`
   @keyframes rotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
   }
   
   img {
