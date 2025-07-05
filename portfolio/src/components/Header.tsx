@@ -255,7 +255,7 @@ const Subtitle = styled(motion.div)`
   }
 `;
 
-const TITLES = ["DevOps Engineer", "SRE Engineer"];
+const TITLES = ["DevOps Engineer", "Site Reliability Engineer"];
 
 const Title = styled(motion.h2)`
   font-size: 2rem;
