@@ -7,11 +7,19 @@ const ContactSection = styled.section`
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
   max-width: 500px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const Form = styled(motion.form)`
@@ -22,6 +30,12 @@ const Form = styled(motion.form)`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
 `;
 
 const Input = styled.input`
@@ -33,6 +47,11 @@ const Input = styled.input`
   color: white;
   outline: none;
   &::placeholder { color: #e0e0e0; }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
 `;
 
 const Textarea = styled.textarea`
@@ -46,6 +65,12 @@ const Textarea = styled.textarea`
   min-height: 120px;
   resize: vertical;
   &::placeholder { color: #e0e0e0; }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    min-height: 100px;
+  }
 `;
 
 const Button = styled.button`
@@ -69,6 +94,12 @@ const Button = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    gap: 0.5rem;
   }
 `;
 
@@ -120,7 +151,7 @@ const Contact: React.FC = () => {
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
+          action="/success"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -135,9 +166,9 @@ const Contact: React.FC = () => {
           <Input type="text" name="name" placeholder="Your Name" required />
           <Input type="email" name="email" placeholder="Your Email" required />
           <Textarea name="message" placeholder="Your Message" required />
-          <Button type="submit" disabled={formStatus === 'submitting'}>
+          <Button type="submit">
             <FaPaperPlane />
-            {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+            Send Message
           </Button>
           
           {formStatus === 'success' && (

@@ -7,6 +7,10 @@ const EducationSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-primary);
   color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -23,6 +27,13 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const EducationCard = styled(motion.div)`
@@ -33,6 +44,11 @@ const EducationCard = styled(motion.div)`
   max-width: 800px;
   margin: 0 auto;
   border: 1px solid var(--border-color);
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+  }
 `;
 
 const Degree = styled.h3`
@@ -40,6 +56,10 @@ const Degree = styled.h3`
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Institution = styled.h4`
@@ -47,6 +67,10 @@ const Institution = styled.h4`
   color: #667eea;
   margin-bottom: 1rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const EducationDetails = styled.div`
@@ -54,6 +78,11 @@ const EducationDetails = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    flex-direction: column;
+  }
 `;
 
 const DetailItem = styled.div`
@@ -62,6 +91,10 @@ const DetailItem = styled.div`
   gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Education: React.FC = () => {

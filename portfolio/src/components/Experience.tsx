@@ -6,6 +6,10 @@ import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 const ExperienceSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-primary);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -22,6 +26,13 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const Timeline = styled.div`
@@ -35,6 +46,15 @@ const Timeline = styled.div`
     width: 2px;
     height: 100%;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    @media (max-width: 768px) {
+      left: 20px;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 40px;
   }
 `;
 
@@ -66,6 +86,22 @@ const TimelineItem = styled(motion.div)`
       right: calc(50% - 15px);
     }
   }
+
+  @media (max-width: 768px) {
+    &:nth-child(odd),
+    &:nth-child(even) {
+      .content {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: left;
+      }
+      
+      .timeline-dot {
+        left: -30px;
+        right: auto;
+      }
+    }
+  }
 `;
 
 const TimelineDot = styled.div`
@@ -77,6 +113,13 @@ const TimelineDot = styled.div`
   border: 4px solid white;
   box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
   z-index: 2;
+
+  @media (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  }
 `;
 
 const Content = styled.div`
@@ -104,6 +147,15 @@ const Content = styled.div`
     left: -20px;
     border-right-color: var(--card-bg);
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 10px;
+    
+    &::before {
+      display: none;
+    }
+  }
 `;
 
 const JobTitle = styled.h3`
@@ -111,12 +163,20 @@ const JobTitle = styled.h3`
   color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Company = styled.h4`
   font-size: 1.2rem;
   color: var(--accent-primary);
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Duration = styled.div`
@@ -126,6 +186,10 @@ const Duration = styled.div`
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Location = styled.div`
@@ -135,6 +199,10 @@ const Location = styled.div`
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Description = styled.ul`
@@ -158,6 +226,12 @@ const DescriptionItem = styled.li`
     left: 0;
     color: var(--accent-primary);
     font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.6rem;
   }
 `;
 

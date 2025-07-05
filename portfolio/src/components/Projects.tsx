@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaCode, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCode } from 'react-icons/fa';
 
 const ProjectsSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-secondary);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -22,6 +26,13 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const ProjectsGrid = styled.div`
@@ -29,6 +40,12 @@ const ProjectsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
 `;
 
 const ProjectCard = styled(motion.div)`
@@ -41,11 +58,19 @@ const ProjectCard = styled(motion.div)`
   &:hover {
     transform: translateY(-5px);
   }
+
+  @media (max-width: 768px) {
+    border-radius: 10px;
+  }
 `;
 
 const ProjectHeader = styled.div`
   padding: 2rem;
   border-bottom: 1px solid var(--border-color);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const ProjectTitle = styled.h3`
@@ -53,29 +78,49 @@ const ProjectTitle = styled.h3`
   color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ProjectRole = styled.div`
   color: var(--accent-primary);
   font-weight: 500;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ProjectDescription = styled.p`
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ProjectContent = styled.div`
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const ResponsibilitiesTitle = styled.h4`
   font-size: 1.1rem;
-  color: #333;
+  color: #ffd700;
   margin-bottom: 1rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ResponsibilitiesList = styled.ul`
@@ -98,6 +143,12 @@ const ResponsibilityItem = styled.li`
     color: var(--accent-primary);
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const TechnologiesTitle = styled.h4`
@@ -105,12 +156,20 @@ const TechnologiesTitle = styled.h4`
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const TechnologiesList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    gap: 0.4rem;
+  }
 `;
 
 const TechnologyTag = styled.span`
@@ -120,25 +179,10 @@ const TechnologyTag = styled.span`
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
-`;
 
-const ProjectLinks = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-`;
-
-const ProjectLink = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--accent-primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--accent-secondary);
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
   }
 `;
 

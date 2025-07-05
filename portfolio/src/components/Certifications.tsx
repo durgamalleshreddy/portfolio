@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaCertificate, FaAward } from 'react-icons/fa';
-import { useTheme } from '../context/ThemeContext';
-
 const CertificationsSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-primary);
   color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -24,6 +26,13 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const CertificationsGrid = styled.div`
@@ -31,6 +40,12 @@ const CertificationsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
 `;
 
 const CertificationCard = styled(motion.div)`
@@ -45,6 +60,11 @@ const CertificationCard = styled(motion.div)`
   &:hover {
     transform: translateY(-5px);
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
 `;
 
 const CertificationIcon = styled.div`
@@ -58,6 +78,13 @@ const CertificationIcon = styled.div`
   margin: 0 auto 1.5rem;
   color: white;
   font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const CertificationTitle = styled.h3`
@@ -66,21 +93,32 @@ const CertificationTitle = styled.h3`
   margin-bottom: 1rem;
   font-weight: bold;
   line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CertificationIssuer = styled.div`
   color: #667eea;
   font-weight: 500;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const CertificationDate = styled.div`
   color: var(--text-secondary);
   font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Certifications: React.FC = () => {
-  const { theme } = useTheme();
   
   const certifications = [
     {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 const HeaderContainer = styled.header`
   min-height: 100vh;
@@ -15,6 +15,11 @@ const HeaderContainer = styled.header`
   padding: 2rem;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-height: 100vh;
+  }
 `;
 
 const ProfileSection = styled(motion.div)`
@@ -23,6 +28,10 @@ const ProfileSection = styled(motion.div)`
   align-items: center;
   margin-bottom: 2rem;
   position: relative;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 // Animated Graphics Container
@@ -35,6 +44,11 @@ const GraphicsContainer = styled(motion.div)`
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 // Floating Geometric Shapes
@@ -133,37 +147,11 @@ const ProfileImage = styled(motion.div)`
     border-radius: 50%;
     transform: scale(1.05);
   }
-`;
 
-const Name = styled(motion.h1)`
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-`;
-
-const Title = styled(motion.h2)`
-  font-size: 2rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-`;
-
-const ResumeButton = styled.a`
-  display: inline-block;
-  margin: 1.5rem 0 2rem 0;
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 30px;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
-  transition: background 0.3s, transform 0.2s;
-  &:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    transform: translateY(-2px) scale(1.04);
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -173,6 +161,13 @@ const ContactInfo = styled(motion.div)`
   justify-content: center;
   gap: 2rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ContactItem = styled(motion.a)`
@@ -187,11 +182,19 @@ const ContactItem = styled(motion.a)`
   &:hover {
     transform: translateY(-2px);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const SocialLinks = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 const SocialLink = styled(motion.a)`
@@ -211,6 +214,12 @@ const SocialLink = styled(motion.a)`
     background: rgba(255,255,255,0.3);
     transform: translateY(-3px);
   }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 `;
 
 const Intro = styled(motion.div)`
@@ -223,6 +232,13 @@ const Intro = styled(motion.div)`
   gap: 0.7rem;
   letter-spacing: 0.5px;
   user-select: none;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
 `;
 
 const Subtitle = styled(motion.div)`
@@ -232,58 +248,31 @@ const Subtitle = styled(motion.div)`
   font-weight: 400;
   letter-spacing: 0.2px;
   user-select: none;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const TITLES = ["DevOps Engineer", "SRE Engineer"];
 
-const DownloadResumeBox = styled.div`
-  margin: 1.5rem 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-`;
+const Title = styled(motion.h2)`
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 
-const DownloadButton = styled.button`
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 30px;
-  border: none;
-  padding: 0.8rem 2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
-  transition: background 0.3s, transform 0.2s;
-  &:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    transform: translateY(-2px) scale(1.04);
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
-`;
-
-const EmailInput = styled.input`
-  padding: 0.7rem 1.2rem;
-  border-radius: 20px;
-  border: 1px solid #eee;
-  font-size: 1rem;
-  outline: none;
-  margin-top: 0.5rem;
-`;
-
-const ErrorMsg = styled.div`
-  color: #ff6b6b;
-  font-size: 0.95rem;
 `;
 
 const Header: React.FC = () => {
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
   const [typing, setTyping] = useState(true);
-  const [showEmailInput, setShowEmailInput] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
-  const [showDownload, setShowDownload] = useState(false);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -322,22 +311,6 @@ const Header: React.FC = () => {
     document.head.appendChild(style);
     return () => { document.head.removeChild(style); };
   }, []);
-
-  const validateEmail = (val: string) =>
-    /^\S+@\S+\.\S+$/.test(val);
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateEmail(email)) {
-      setEmailValid(true);
-      setShowDownload(true);
-      setError('');
-    } else {
-      setError('Please enter a valid email address.');
-      setEmailValid(false);
-      setShowDownload(false);
-    }
-  };
 
   return (
     <HeaderContainer>

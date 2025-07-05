@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaHeart, FaUsers, FaTrophy } from 'react-icons/fa';
+import { FaHeart, FaUsers } from 'react-icons/fa';
 
 const PersonalSection = styled.section`
   padding: 5rem 2rem;
   background: var(--bg-primary);
   color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -23,6 +27,13 @@ const SectionTitle = styled(motion.h2)`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const PersonalGrid = styled.div`
@@ -30,6 +41,12 @@ const PersonalGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
 `;
 
 const PersonalCard = styled(motion.div)`
@@ -38,6 +55,11 @@ const PersonalCard = styled(motion.div)`
   border-radius: 15px;
   box-shadow: 0 10px 30px var(--shadow-color);
   border: 1px solid var(--border-color);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -48,6 +70,11 @@ const CardTitle = styled.h3`
   align-items: center;
   gap: 0.5rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ActivityList = styled.ul`
@@ -68,6 +95,12 @@ const ActivityItem = styled.li`
     left: 0;
     color: #667eea;
     font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 `;
 

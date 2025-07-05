@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styled from 'styled-components';
 import { ThemeProvider } from './context/ThemeContext';
 import Navigation from './components/Navigation';
