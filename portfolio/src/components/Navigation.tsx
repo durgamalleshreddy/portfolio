@@ -65,17 +65,19 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     background: var(--nav-bg);
     backdrop-filter: blur(15px);
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     transform: ${props => props.isOpen ? 'translateY(-100%)' : 'translateY(0)'};
     transition: transform 0.3s ease;
     border-top: 1px solid var(--nav-border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 100%);
+    max-height: 70vh;
     overflow-y: auto;
+    z-index: 1001;
   }
   
   @media (max-width: 480px) {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
+    max-height: 60vh;
   }
 `;
 
@@ -109,7 +111,7 @@ const NavLink = styled.a`
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
@@ -120,6 +122,12 @@ const NavLink = styled.a`
     
     &::after {
       display: none;
+    }
+    
+    &:hover {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      margin: 0.25rem 0;
     }
   }
 `;
@@ -149,13 +157,13 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-const MobileMenuOverlay = styled(motion.div)`
+const MobileMenuBackdrop = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 999;
   display: none;
   
@@ -188,14 +196,13 @@ const Navigation: React.FC = () => {
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden';
+      // Don't hide body scroll for better UX
     } else {
-      document.body.style.overflow = 'unset';
+      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
@@ -256,7 +263,7 @@ const Navigation: React.FC = () => {
       
       <AnimatePresence>
         {isOpen && (
-          <MobileMenuOverlay
+          <MobileMenuBackdrop
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -370,10 +370,7 @@ const Title = styled(motion.h2)`
   }
 `;
 
-const Cursor = styled.span`
-  animation: blink 1s infinite;
-  color: #ffe066;
-`;
+
 
 const Header: React.FC = () => {
   const [titleIndex, setTitleIndex] = useState(0);
