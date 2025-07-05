@@ -4,22 +4,26 @@ import { motion } from 'framer-motion';
 import { FaCode } from 'react-icons/fa';
 
 const ProjectsSection = styled.section`
-  padding: 5rem 2rem;
+  padding: var(--section-padding);
   background: var(--bg-secondary);
 
   @media (max-width: 768px) {
     padding: 3rem 1rem;
   }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 `;
 
 const SectionTitle = styled(motion.h2)`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-primary);
   display: flex;
@@ -28,10 +32,13 @@ const SectionTitle = styled(motion.h2)`
   gap: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
     margin-bottom: 2rem;
     flex-direction: column;
     gap: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -41,26 +48,47 @@ const ProjectsGrid = styled.div`
   gap: 2rem;
   margin-top: 3rem;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 2rem;
   }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 `;
 
 const ProjectCard = styled(motion.div)`
   background: var(--card-bg);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
   
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 768px) {
     border-radius: 10px;
+    
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -71,10 +99,14 @@ const ProjectHeader = styled.div`
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ProjectTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -82,15 +114,25 @@ const ProjectTitle = styled.h3`
   @media (max-width: 768px) {
     font-size: 1.3rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ProjectRole = styled.div`
   color: var(--accent-primary);
   font-weight: 500;
   margin-bottom: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -98,9 +140,15 @@ const ProjectDescription = styled.p`
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -110,10 +158,14 @@ const ProjectContent = styled.div`
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ResponsibilitiesTitle = styled.h4`
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: #ffd700;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -121,12 +173,21 @@ const ResponsibilitiesTitle = styled.h4`
   @media (max-width: 768px) {
     font-size: 1rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const ResponsibilitiesList = styled.ul`
   list-style: none;
   padding: 0;
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const ResponsibilityItem = styled.li`
@@ -135,6 +196,7 @@ const ResponsibilityItem = styled.li`
   margin-bottom: 0.8rem;
   line-height: 1.6;
   color: var(--text-secondary);
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
   
   &::before {
     content: '•';
@@ -149,16 +211,27 @@ const ResponsibilityItem = styled.li`
     padding-left: 1.2rem;
     margin-bottom: 0.6rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const TechnologiesTitle = styled.h4`
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -170,6 +243,10 @@ const TechnologiesList = styled.div`
   @media (max-width: 768px) {
     gap: 0.4rem;
   }
+  
+  @media (max-width: 480px) {
+    gap: 0.3rem;
+  }
 `;
 
 const TechnologyTag = styled.span`
@@ -177,12 +254,22 @@ const TechnologyTag = styled.span`
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
   font-weight: 500;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
 
   @media (max-width: 768px) {
     padding: 0.2rem 0.6rem;
     font-size: 0.7rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
   }
 `;
 

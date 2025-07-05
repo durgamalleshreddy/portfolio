@@ -19,6 +19,11 @@ const HeaderContainer = styled.header`
   @media (max-width: 768px) {
     padding: 1rem;
     min-height: 100vh;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -28,6 +33,7 @@ const ProfileSection = styled(motion.div)`
   align-items: center;
   margin-bottom: 2rem;
   position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -49,6 +55,11 @@ const GraphicsContainer = styled(motion.div)`
     width: 200px;
     height: 200px;
   }
+  
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 // Floating Geometric Shapes
@@ -68,6 +79,17 @@ const FloatingShape = styled(motion.div)<{ size: number; color: string; shape: s
     width: 0;
     height: 0;
   `}
+  
+  @media (max-width: 768px) {
+    width: ${props => props.size * 0.7}px;
+    height: ${props => props.size * 0.7}px;
+    
+    ${props => props.shape === 'triangle' && `
+      border-left: ${props.size * 0.35}px solid transparent;
+      border-right: ${props.size * 0.35}px solid transparent;
+      border-bottom: ${props.size * 0.7}px solid ${props.color};
+    `}
+  }
 `;
 
 // Animated Particles
@@ -78,6 +100,11 @@ const Particle = styled(motion.div)<{ size: number; color: string }>`
   background: ${props => props.color};
   border-radius: 50%;
   opacity: 0.6;
+  
+  @media (max-width: 768px) {
+    width: ${props => props.size * 0.7}px;
+    height: ${props => props.size * 0.7}px;
+  }
 `;
 
 // Glowing Ring Effect
@@ -91,6 +118,16 @@ const GlowRing = styled(motion.div)`
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   z-index: 0;
+  
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 160px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 const InnerGlowRing = styled(motion.div)`
@@ -102,6 +139,16 @@ const InnerGlowRing = styled(motion.div)`
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
+  
+  @media (max-width: 768px) {
+    width: 140px;
+    height: 140px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const ProfileImage = styled(motion.div)`
@@ -153,6 +200,12 @@ const ProfileImage = styled(motion.div)`
     height: 120px;
     margin-bottom: 1rem;
   }
+  
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const ContactInfo = styled(motion.div)`
@@ -168,6 +221,11 @@ const ContactInfo = styled(motion.div)`
     flex-direction: column;
     align-items: center;
   }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const ContactItem = styled(motion.a)`
@@ -178,13 +236,25 @@ const ContactItem = styled(motion.a)`
   text-decoration: none;
   font-size: 1.1rem;
   transition: transform 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
   
   &:hover {
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   @media (max-width: 768px) {
     font-size: 1rem;
+    padding: 0.75rem;
+    min-width: 200px;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    min-width: 180px;
+    padding: 0.5rem;
   }
 `;
 
@@ -194,6 +264,10 @@ const SocialLinks = styled(motion.div)`
 
   @media (max-width: 768px) {
     gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
   }
 `;
 
@@ -220,6 +294,12 @@ const SocialLink = styled(motion.a)`
     height: 40px;
     font-size: 1.2rem;
   }
+  
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 `;
 
 const Intro = styled(motion.div)`
@@ -239,6 +319,11 @@ const Intro = styled(motion.div)`
     flex-direction: column;
     gap: 0.3rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const Subtitle = styled(motion.div)`
@@ -253,6 +338,11 @@ const Subtitle = styled(motion.div)`
     font-size: 1rem;
     margin-bottom: 1rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const TITLES = ["DevOps Engineer", "Site Reliability Engineer"];
@@ -262,11 +352,27 @@ const Title = styled(motion.h2)`
   font-weight: 300;
   margin-bottom: 2rem;
   opacity: 0.9;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    min-height: 2.5rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    min-height: 2rem;
+  }
+`;
+
+const Cursor = styled.span`
+  animation: blink 1s infinite;
+  color: #ffe066;
 `;
 
 const Header: React.FC = () => {

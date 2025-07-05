@@ -4,22 +4,26 @@ import { motion } from 'framer-motion';
 import { FaCogs, FaUsers, FaBrain } from 'react-icons/fa';
 
 const SkillsSection = styled.section`
-  padding: 5rem 2rem;
+  padding: var(--section-padding);
   background: var(--bg-primary);
 
   @media (max-width: 768px) {
     padding: 3rem 1rem;
   }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 `;
 
 const SectionTitle = styled(motion.h2)`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-primary);
   display: flex;
@@ -28,10 +32,13 @@ const SectionTitle = styled(motion.h2)`
   gap: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
     margin-bottom: 2rem;
     flex-direction: column;
     gap: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -41,27 +48,56 @@ const SkillsGrid = styled.div`
   gap: 3rem;
   margin-top: 3rem;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+    margin-top: 1.5rem;
   }
 `;
 
 const SkillCategory = styled(motion.div)`
   background: var(--bg-secondary);
   padding: 2rem;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
 
   @media (max-width: 768px) {
     padding: 1.5rem;
     border-radius: 10px;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
 const CategoryTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   display: flex;
@@ -73,6 +109,11 @@ const CategoryTitle = styled.h3`
     font-size: 1.3rem;
     margin-bottom: 1rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const SkillsList = styled.div`
@@ -82,6 +123,10 @@ const SkillsList = styled.div`
 
   @media (max-width: 768px) {
     gap: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.6rem;
   }
 `;
 
@@ -93,15 +138,30 @@ const SkillItem = styled(motion.div)`
   background: var(--card-bg);
   border-radius: 10px;
   box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
   
   &:hover {
     transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
     padding: 0.8rem;
     gap: 0.8rem;
+    
+    &:hover {
+      transform: translateX(3px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    gap: 0.6rem;
+    
+    &:hover {
+      transform: translateX(2px);
+    }
   }
 `;
 
@@ -115,22 +175,34 @@ const SkillIcon = styled.div`
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  flex-shrink: 0;
 
   @media (max-width: 768px) {
     width: 35px;
     height: 35px;
     font-size: 0.8rem;
   }
+  
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
 `;
 
 const SkillName = styled.span`
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: var(--text-primary);
   font-weight: 500;
+  line-height: 1.4;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
   }
 `;
 
